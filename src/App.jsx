@@ -1,5 +1,6 @@
 
 import './App.css'
+import AboutMe from './components/AboutMe'
 import About from './components/AboutUs'
 import Contact from './components/Contact'
 import Education from './components/Education'
@@ -18,6 +19,7 @@ function App() {
     <>
       <Header />
       <Hero/>
+      <AboutMe/>
       <About/>
       <Skills/>
       <Projects/>
