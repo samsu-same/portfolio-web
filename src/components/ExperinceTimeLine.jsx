@@ -20,7 +20,7 @@ const experiences = [
     id: 3,
     title: "FreeLancing | Internship",
     company: "Codevue technology (WFH)",
-    duration: "Jan 2023 - March 2023",
+    duration: "March 2024 - Aug 2024",
     side: "right",
   },
 ];

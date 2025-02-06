@@ -1,8 +1,25 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const controls = useAnimation();
+
+  useEffect(() => {
+    const sequence = async () => {
+      // First make element visible
+      await controls.start({ opacity: 1 });
+      // Then animate width for typing effect
+      await controls.start({ 
+        width: "100%",
+        transition: { 
+          duration: 3, // ← Control speed here (3 seconds)
+          ease: "easeInOut" 
+        }
+      });
+    };
+    sequence();
+  }, [controls]);
 
   return (
     <motion.header
@@ -12,9 +29,13 @@ const Header = () => {
       className="bg-gradient-to-r from-purple-900 to-indigo-900 text-white shadow-2xl fixed w-full z-50 rounded-b-2xl"
     >
       <div className="container mx-auto flex justify-between items-center p-4">
-        <h1 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-red-500">
+        <motion.h1
+          className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-red-500 overflow-hidden whitespace-nowrap"
+          initial={{ opacity: 0, width: 0 }}
+          animate={controls}
+        >
           Samsuddin Ansari
-        </h1>
+        </motion.h1>
 
         <nav>
           <ul className={`md:flex space-x-6 ${isMenuOpen ? 'block' : 'hidden'} md:block bg-purple-800 md:bg-transparent absolute md:static top-16 left-0 w-full md:w-auto text-center md:text-left rounded-md md:rounded-none shadow-lg md:shadow-none transition-all duration-500 ease-in-out`}> 

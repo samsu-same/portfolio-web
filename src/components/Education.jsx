@@ -13,7 +13,7 @@ const educationData = [
     id: 2,
     institution: "Ramanuj Gupta Junior College",
     degree: "Higher Secondary +2",
-    duration: "2012 - 2016",
+    duration: "2011 - 2013",
     description: "Secured first class distinction.Studied Physic, Chemistry, Mathematics, Biology, English, Alt English.",
     logo: "", 
   },

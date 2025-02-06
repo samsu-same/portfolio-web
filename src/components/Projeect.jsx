@@ -8,7 +8,8 @@ const projects = [
   { id: 4, name: "AK Construction ", description: " comprehensive and user-friendly website for a construction company, focusing on showcasing their services, portfolio, and client testimonials", link: "https://akconstruction.tech/", image: "/images/akconstruction.png" },
   { id: 5, name: "Next IAS Education", description: "An innovative project for edutech field.", link: "https://ias-app-six.vercel.app/", image: "/images/nextias.png" },
   { id: 6, name: "Dashboard", description: "An innovative project built on Next js.", link: "#", image: "/images/dashboard.png" },
-  { id: 7, name: "Expense Tracker", description: "Helps ypu track your financial goal.", link: "https://expense-tracker-pi-gilt.vercel.app/dashboard", image: "/images/expensetracker.png" },
+  { id: 7, name: "Hotel Clermont", description: "An innovative hotel booking project built on Next js.", link: "https://www.hotelclermont.com/", image: "/images/hotelclermont.png" },
+  { id: 8, name: "Expense Tracker", description: "Helps ypu track your financial goal.", link: "https://expense-tracker-pi-gilt.vercel.app/dashboard", image: "/images/expensetracker.png" },
 ];
 
 const ProjectCard = ({ project }) => (

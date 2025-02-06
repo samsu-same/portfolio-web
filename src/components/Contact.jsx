@@ -2,8 +2,33 @@
 
 import { motion } from "framer-motion";
 import { FaPhone, FaWhatsapp, FaEnvelope } from "react-icons/fa"; // Icons for the header and cards
-
+import { useState } from "react";
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: "",
+      });
+    
+      const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+      };
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        // Check if all fields are filled
+        if (!formData.name || !formData.email || !formData.message) {
+          alert("Please fill in all the fields before submitting.");
+          return;
+        }
+    
+        // Display success alert
+        alert(`Thank you, ${formData.name}! Your message has been sent successfully.`);
+    
+        // Optionally, you can reset the form after submission
+        setFormData({ name: "", email: "", message: "" });
+      };
   return (
     <motion.section
       initial={{ opacity: 0, y: 50 }}
@@ -88,21 +113,45 @@ const Contact = () => {
                       transition={{ duration: 0.5, delay: 0.4 }}
                       className="w-full md:w-1/2 p-8 bg-white rounded-lg shadow-lg"
                   >
-                      <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
+                      <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
                       <form className="space-y-4">
-                          <input
-                              type="text"
-                              placeholder="Your Name"
-                              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                          />
-                          <input
-                              type="email"
-                              placeholder="Your Email"
-                              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                          />
+                          <div className="form-group w-full">
+                              <input
+                                  type="text"
+                                  name="name"
+                                  placeholder=""
+                                  id="name"
+                                  value={formData.name}
+                  onChange={handleChange}
+                                  className=" w-full py-2 bg-gray-100 rounded-md placeholder:px-4 "
+                              />
+                              <label htmlFor="name" className="block text-sm font-medium mb-1">
+                                  Enter Your Name
+                              </label>
+                          </div>
+     
+
+                          <div className="form-group w-full">
+                              <input
+                                  type="text"
+                                  name="email"
+                                  placeholder=""
+                                  id="email"
+                                  value={formData.email}
+                                  onChange={handleChange}
+                                  className=" w-full py-2 bg-gray-100 rounded-md placeholder:px-4 "
+                              />
+                              <label htmlFor="email" className="block text-sm font-medium mb-1">
+                                  Your Email
+                              </label>
+                          </div>
+                          
                           <textarea
+                          name="message"
                               placeholder="Your Message"
-                              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              value={formData.message}
+                              onChange={handleChange}
+                              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-800"
                               rows="5"
                           ></textarea>
                           <button
