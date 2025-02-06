@@ -20,8 +20,8 @@ const Contact = () => {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   className="text-center mb-12"
               >
-                  <h2 className="text-4xl font-bold flex items-center justify-center gap-2">
-                      <FaEnvelope className="text-purple-800" /> Get in Touch</h2>
+                  <h2 className="text-5xl font-bold flex items-center justify-center gap-2 animate-bounce">
+                      <FaEnvelope className="text-purple-800" /> Get in <span className="text-purple-800">Touch</span></h2>
                   <p className="text-gray-600 mt-2">Feel free to reach out to me for any inquiries or collaborations. </p>
               </motion.div>
               <div className="flex flex-col md:flex-row gap-8">
@@ -107,7 +107,7 @@ const Contact = () => {
                           ></textarea>
                           <button
                               type="submit"
-                              className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all duration-300"
+                              className="w-full p-3 bg-gradient-to-r from-pink-700 to-yellow-700 text-white font-bold rounded-full shadow-lg hover:shadow-2xl hover:from-yellow-500 hover:to-pink-500 transition-transform transform hover:scale-105 duration-300 cursor-pointer"
                           >
                               Send Message
                           </button>

@@ -25,19 +25,31 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a href="#projects" className="block py-2 md:py-0 px-4 relative group overflow-hidden transition duration-300 rounded-md hover:rounded-xl">
-                <span className="absolute inset-0 bg-yellow-300 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out rounded-md group-hover:rounded-xl"></span>
-                <span className="relative z-10 text-white group-hover:text-purple-900 transition duration-300">Projects</span>
-              </a>
-            </li>
-            <li>
-              <a href="#skills" className="block py-2 md:py-0 px-4 relative group overflow-hidden transition duration-300 rounded-md hover:rounded-xl">
+              <a href="#skills" className="block py-2 md:py-0 px-2 relative group overflow-hidden transition duration-300 rounded-md hover:rounded-xl">
                 <span className="absolute inset-0 bg-yellow-300 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out rounded-md group-hover:rounded-xl"></span>
                 <span className="relative z-10 text-white group-hover:text-purple-900 transition duration-300">Skills</span>
               </a>
             </li>
             <li>
-              <a href="#contact" className="block py-2 md:py-0 px-4 relative group overflow-hidden transition duration-300 rounded-md hover:rounded-xl">
+              <a href="#projects" className="block py-2 md:py-0 px-2 relative group overflow-hidden transition duration-300 rounded-md hover:rounded-xl">
+                <span className="absolute inset-0 bg-yellow-300 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out rounded-md group-hover:rounded-xl"></span>
+                <span className="relative z-10 text-white group-hover:text-purple-900 transition duration-300">Projects</span>
+              </a>
+            </li>
+            <li>
+              <a href="#experience" className="block py-2 md:py-0 px-2 relative group overflow-hidden transition duration-300 rounded-md hover:rounded-xl">
+                <span className="absolute inset-0 bg-yellow-300 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out rounded-md group-hover:rounded-xl"></span>
+                <span className="relative z-10 text-white group-hover:text-purple-900 transition duration-300">Experience</span>
+              </a>
+            </li>
+            <li>
+              <a href="#education" className="block py-2 md:py-0 px-2 relative group overflow-hidden transition duration-300 rounded-md hover:rounded-xl">
+                <span className="absolute inset-0 bg-yellow-300 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out rounded-md group-hover:rounded-xl"></span>
+                <span className="relative z-10 text-white group-hover:text-purple-900 transition duration-300">Education</span>
+              </a>
+            </li>
+            <li>
+              <a href="#contact" className="block py-2 md:py-0 px-2 relative group overflow-hidden transition duration-300 rounded-md hover:rounded-xl">
                 <span className="absolute inset-0 bg-yellow-300 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out rounded-md group-hover:rounded-xl"></span>
                 <span className="relative z-10 text-white group-hover:text-purple-900 transition duration-300">Contact</span>
               </a>

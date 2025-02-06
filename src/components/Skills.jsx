@@ -78,7 +78,9 @@ const Skills = () => {
   return (
     <section id="skills" className="p-8 bg-black text-white overflow-hidden">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center" aria-label="Skills Section">
+        <h2 className="text-5xl md:text-6xl font-extrabold mb-12 text-center
+                   text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-purple-800 
+                   drop-shadow-lg animate-bounce" aria-label="Skills Section">
           Skills
         </h2>
         <div className="space-y-4">

@@ -18,8 +18,8 @@ const experiences = [
   },
   {
     id: 3,
-    title: "UI Developer | Internship",
-    company: "Tech Sphere, Mumbai (WFH)",
+    title: "FreeLancing | Internship",
+    company: "Codevue technology (WFH)",
     duration: "Jan 2023 - March 2023",
     side: "right",
   },
@@ -27,9 +27,11 @@ const experiences = [
 
 const ExperienceTimeline = () => {
   return (
-    <section className="py-12 bg-gray-100">
+    <section id='experience' className="py-12 bg-gray-100">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12">
+        <h2 className="text-5xl md:text-6xl font-extrabold mb-12 text-center
+                   text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-purple-800 
+                   drop-shadow-lg animate-bounce">
           Experience
         </h2>
 
@@ -82,7 +84,7 @@ const ExperienceTimeline = () => {
         <div className="text-center mt-10">
           <motion.button
             whileHover={{ scale: 1.1 }}
-            className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md"
+            className="px-6 py-2 bg-gradient-to-r from-pink-700 to-yellow-700 text-white font-bold rounded-full shadow-lg hover:shadow-2xl hover:from-yellow-500 hover:to-pink-500 transition-transform transform hover:scale-105 duration-300 cursor-pointer"
           >
             Work In Progress →
           </motion.button>

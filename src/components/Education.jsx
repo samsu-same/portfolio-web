@@ -6,7 +6,7 @@ const educationData = [
     institution: "Mizoram University",
     degree: "Bachelor of Civil Engineering",
     duration: "2015 - 2019",
-    description: "Graduated with honors, specializing in software development and machine learning.",
+    description: "Graduated with honors",
     logo: "/images/Mizoram_University_logo.png", 
   },
   {
@@ -62,7 +62,9 @@ const Education = () => {
       className="p-8 bg-gradient-to-r from-blue-50 to-purple-50"
     >
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Education</h2>
+        <h2 className="text-5xl md:text-6xl font-extrabold mb-12 text-center
+                   text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-purple-800 
+                   drop-shadow-lg animate-bounce">Education</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {educationData.map((education) => (
             <EducationCard key={education.id} education={education} />
