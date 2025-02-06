@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const projects = [
-  { id: 1, name: "Teghiya Travels", description: "Bus Ticket Booking Application.Developing a user-friendly bus booking platform with features like dynamic bus listing, filtering, seat selection, cart, and checkout system.", link: "https://www.teghiyatravels.in/", image: "/images/teghiyatravels.png" },
-  { id: 2, name: "Yingkiong Store", description: "A E-commerce website for fruits, vegetables deliverey.Developed Features: product listing, cart, checkout, search, user authentication, order emails.Implemented lazy loading.", link: "#", image: "/images/yingkiongstore.png" },
-  { id: 3, name: "AK Construction ", description: " comprehensive and user-friendly website for a construction company, focusing on showcasing their services, portfolio, and client testimonials", link: "https://akconstruction.tech/", image: "/images/akconstruction.png" },
-  { id: 4, name: "Next IAS Education", description: "An innovative project for edutech field.", link: "https://ias-app-six.vercel.app/", image: "/images/nextias.png" },
-  { id: 5, name: "Portfolio Website", description: "An innovative project to showcase my projects, skills education", link: "#", image: "/images/portfolio.png" },
+  { id: 1, name: "Portfolio Website", description: "An innovative project to showcase my projects, skills education", link: "https://portfolio-web-orpin-two.vercel.app/", image: "/images/portfolio.png" },
+  { id: 2, name: "Teghiya Travels", description: "Bus Ticket Booking Application.Developing a user-friendly bus booking platform with features like dynamic bus listing, filtering, seat selection, cart, and checkout system.", link: "https://www.teghiyatravels.in/", image: "/images/teghiyatravels.png" },
+  { id: 3, name: "Yingkiong Store", description: "A E-commerce website for fruits, vegetables deliverey.Developed Features: product listing, cart, checkout, search, user authentication, order emails.Implemented lazy loading.", link: "#", image: "/images/yingkiongstore.png" },
+  { id: 4, name: "AK Construction ", description: " comprehensive and user-friendly website for a construction company, focusing on showcasing their services, portfolio, and client testimonials", link: "https://akconstruction.tech/", image: "/images/akconstruction.png" },
+  { id: 5, name: "Next IAS Education", description: "An innovative project for edutech field.", link: "https://ias-app-six.vercel.app/", image: "/images/nextias.png" },
   { id: 6, name: "Dashboard", description: "An innovative project built on Next js.", link: "#", image: "/images/dashboard.png" },
   { id: 7, name: "Expense Tracker", description: "Helps ypu track your financial goal.", link: "https://expense-tracker-pi-gilt.vercel.app/dashboard", image: "/images/expensetracker.png" },
 ];
@@ -20,7 +20,7 @@ const ProjectCard = ({ project }) => (
     <img src={project.image} alt={project.name} className="w-full h-56 object-cover rounded-md mb-4" />
     <h3 className="text-xl font-bold text-gray-800">{project.name}</h3>
     <p className="text-gray-600 mt-1">{project.description}</p>
-    <a href={project.link} className="mt-1 inline-block text-blue-500 hover:text-blue-700 transition-all">
+    <a target="_blank" href={project.link} className="mt-1 inline-block text-blue-500 hover:text-blue-700 transition-all">
       View Project →
     </a>
   </motion.div>
