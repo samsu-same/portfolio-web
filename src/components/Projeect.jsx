@@ -15,7 +15,7 @@ const projects = [
 const ProjectCard = ({ project }) => (
 <motion.div
     whileHover={{ scale: 1.05, rotateY: 5 }}
-    className="p-6 bg-white rounded-2xl shadow-2xl border border-gray-200 transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 w-full cursor-pointer"
+    className="p-4 bg-white rounded-2xl shadow-2xl border border-gray-200 transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 w-full cursor-pointer"
     style={{ perspective: "1000px", boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)" }}
   >
     <img src={project.image} alt={project.name} className="w-full h-56 object-cover rounded-md mb-4" />
@@ -45,7 +45,7 @@ const Projects = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       id="projects"
-      className="p-8 bg-gradient-to-r from-blue-500 to-purple-500"
+      className="p-4 bg-gradient-to-r from-blue-500 to-purple-500"
     >
       <div className="container mx-auto relative">
         <h2 className="text-5xl md:text-6xl font-extrabold mb-12 text-center
@@ -62,7 +62,7 @@ const Projects = () => {
         </div>
         <div className="md:hidden relative flex items-center justify-center w-full">
           <button onClick={prevSlide} className="absolute left-0 p-2 bg-gray-300 rounded-full">◀</button>
-          <div className="w-full px-8">
+          <div className="w-full ">
             <ProjectCard project={projects[currentIndex]} />
           </div>
           <button onClick={nextSlide} className="absolute right-0 p-2 bg-gray-300 rounded-full">▶</button>

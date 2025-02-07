@@ -59,7 +59,7 @@ const Education = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       id="education"
-      className="p-8 bg-gradient-to-r from-blue-50 to-purple-50"
+      className="p-4 bg-gradient-to-r from-blue-50 to-purple-50"
     >
       <div className="container mx-auto">
         <h2 className="text-5xl md:text-6xl font-extrabold mb-12 text-center

@@ -35,7 +35,7 @@ const Contact = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       id="contact"
-      className="p-8 bg-gray-50"
+      className="p-4 bg-gray-50"
     >
           <div className="container mx-auto">
               {/* Centered Header with Icon */}
@@ -45,7 +45,7 @@ const Contact = () => {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   className="text-center mb-12"
               >
-                  <h2 className="text-5xl font-bold flex items-center justify-center gap-2 animate-bounce">
+                  <h2 className="text-2xl md:text-5xl font-bold flex items-center justify-center gap-2 animate-bounce">
                       <FaEnvelope className="text-purple-800" /> Get in <span className="text-purple-800">Touch</span></h2>
                   <p className="text-gray-600 mt-2">Feel free to reach out to me for any inquiries or collaborations. </p>
               </motion.div>
