@@ -1,0 +1,15 @@
+[
+    {
+      "question": "What are your skills?",
+      "answer": "I have 2 years of experience in backend development using Node.js, Express, and MongoDB. I also work with React, Tailwind CSS, and Framer Motion."
+    },
+    {
+      "question": "What projects have you worked on?",
+      "answer": "I have built several projects, including an AI job application bot using React and Node.js."
+    },
+    {
+      "question": "Tell me about your portfolio?",
+      "answer": "My portfolio showcases my work in AI integrations, dynamic forms in React, and backend development with Node.js."
+    }
+  ]
+  

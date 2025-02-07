@@ -61,10 +61,11 @@ const Projects = () => {
           <button onClick={nextSlide} className="absolute right-0 p-2 bg-gray-300 rounded-full">▶</button>
         </div>
         <div className="md:hidden relative flex items-center justify-center w-full">
-          <button onClick={prevSlide} className="absolute left-0 p-2 bg-gray-300 rounded-full">◀</button>
+          
           <div className="w-full ">
             <ProjectCard project={projects[currentIndex]} />
           </div>
+          <button onClick={prevSlide} className="absolute top-1/2 left-2 transform -translate-y-1/2 p-2 bg-gray-300 rounded-full">◀</button>
           <button onClick={nextSlide} className="absolute right-0 p-2 bg-gray-300 rounded-full">▶</button>
         </div>
       </div>
