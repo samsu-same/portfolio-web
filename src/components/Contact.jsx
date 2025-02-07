@@ -1,7 +1,7 @@
 
 
 import { motion } from "framer-motion";
-import { FaPhone, FaWhatsapp, FaEnvelope } from "react-icons/fa"; // Icons for the header and cards
+import { FaPhone, FaWhatsapp, FaEnvelope, FaInstagram } from "react-icons/fa"; // Icons for the header and cards
 import { useState } from "react";
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -104,6 +104,29 @@ const Contact = () => {
                               </div>
                           </div>
                       </motion.div>
+
+                      {/* Instagram QR Code Card */}
+                      {/* <motion.div
+                          className="flex flex-col md:flex-row items-center justify-center bg-gray-800 p-6 rounded-lg shadow-lg"
+                          initial={{ opacity: 0, y: 50 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5 }}
+                      >
+                          <div className="w-full md:w-4/5  flex justify-center">
+                              <img
+                                  src="/images/instagram.jpg"
+                                  alt="Instagram QR Code"
+                                  className="w-full h-64 md:h-96 object-cover rounded-lg shadow-md mask mask-circle"
+                              />
+                              
+                          </div>
+
+                          <div className="w-full md:w-1/5  flex flex-col items-center md:items-start text-center md:text-left mt-6 md:mt-0 md:ml-8">
+                              <h3 className="text-2xl font-semibold text-white">Instagram</h3>
+                              <p className="text-gray-200 mt-2">Scan to follow me</p>
+                          </div>
+                      </motion.div> */}
+                      
                   </motion.div>
                   {/* Form and Cards Container */}
                   {/* Form on the left */}

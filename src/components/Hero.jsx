@@ -348,7 +348,7 @@ const Hero = () => {
               <FaGithub />
             </motion.a>
             <motion.a
-              href="https://instagram.com"
+              href="https://www.instagram.com/samsu_same?igsh=djZmMGlzMmJzZ2N1"
               target="_blank"
               rel="noopener noreferrer"
               className="text-4xl text-gray-200 hover:text-pink-500 transition-colors duration-300"
