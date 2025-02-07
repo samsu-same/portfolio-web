@@ -45,7 +45,6 @@ const Projects = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       id="projects"
-      //   className="p-8 bg-gray-100"
       className="p-8 bg-gradient-to-r from-blue-500 to-purple-500"
     >
       <div className="container mx-auto relative">

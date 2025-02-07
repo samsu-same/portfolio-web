@@ -29,7 +29,7 @@ const ExperienceTimeline = () => {
   return (
     <section id='experience' className="py-12 bg-gray-100">
       <div className="container mx-auto px-4">
-        <h2 className="text-5xl md:text-6xl font-extrabold mb-12 text-center
+        <h2 className="text-5xl md:text-6xl font-extrabold mb-2 text-center
                    text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-purple-800 
                    drop-shadow-lg animate-bounce">
           Experience
@@ -48,7 +48,7 @@ const ExperienceTimeline = () => {
               viewport={{ once: true }}
               className={`relative flex items-center w-full max-w-4xl ${
                 exp.side === "left" ? "justify-start" : "justify-end"
-              } mb-2 md:mb-4`}
+              }  md:mb-4`}
             >
               {/* Suitcase Icon */}
               <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 bg-blue-600 text-white p-3 rounded-full shadow-lg z-10">
