@@ -2,7 +2,7 @@
 import './App.css'
 import AboutMe from './components/AboutMe'
 import About from './components/AboutUs'
-import Chatbot from './components/Chatbot'
+
 
 import Contact from './components/Contact'
 import Education from './components/Education'
@@ -21,7 +21,7 @@ function App() {
     <>
       <Header />
       <Hero/>
-      {/* <Chatbot/> */}
+
       <AboutMe/>
       {/* <About/> */}
       <Skills/>
