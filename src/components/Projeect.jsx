@@ -10,6 +10,7 @@ const projects = [
   { id: 6, name: "Dashboard", description: "An innovative project built on Next js.", link: "#", image: "/images/dashboard.png" },
   { id: 7, name: "Hotel Clermont", description: "An innovative hotel booking project built on Next js.", link: "https://www.hotelclermont.com/", image: "/images/hotelclermont.png" },
   { id: 8, name: "Expense Tracker", description: "Helps ypu track your financial goal.", link: "https://expense-tracker-pi-gilt.vercel.app/dashboard", image: "/images/expensetracker.png" },
+  { id: 8, name: "Sacred Heart School", description: "An intuitive and modern website for Sacred Heart School, designed to enhance the learning experience with seamless navigation and engaging features.", link: "https://sacred-heart-school.vercel.app/", image: "/images/shs.png" },
 ];
 
 const ProjectCard = ({ project }) => (
