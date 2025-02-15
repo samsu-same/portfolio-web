@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const projects = [
   { id: 1, name: "Portfolio Website", description: "An innovative project to showcase my projects, skills education", link: "https://portfolio-web-orpin-two.vercel.app/", image: "/images/portfolio.png" },
@@ -10,21 +11,38 @@ const projects = [
   { id: 6, name: "Dashboard", description: "An innovative project built on Next js.", link: "#", image: "/images/dashboard.png" },
   { id: 7, name: "Hotel Clermont", description: "An innovative hotel booking project built on Next js.", link: "https://www.hotelclermont.com/", image: "/images/hotelclermont.png" },
   { id: 8, name: "Expense Tracker", description: "Helps ypu track your financial goal.", link: "https://expense-tracker-pi-gilt.vercel.app/dashboard", image: "/images/expensetracker.png" },
-  { id: 8, name: "Sacred Heart School", description: "An intuitive and modern website for Sacred Heart School, designed to enhance the learning experience with seamless navigation and engaging features.", link: "https://sacred-heart-school.vercel.app/", image: "/images/shs.png" },
+  { id: 9, name: "Sacred Heart School", description: "An intuitive and modern website for Sacred Heart School, designed to enhance the learning experience with seamless navigation and engaging features.", link: "https://sacred-heart-school.vercel.app/", image: "/images/shs.png" },
 ];
 
 const ProjectCard = ({ project }) => (
-<motion.div
+  <motion.div
     whileHover={{ scale: 1.05, rotateY: 5 }}
-    className="p-4 bg-white rounded-2xl shadow-2xl border border-gray-200 transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 w-full cursor-pointer"
+    className="p-4 bg-white rounded-2xl shadow-2xl border border-gray-200 transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 w-full cursor-pointer flex flex-col min-h-full"
     style={{ perspective: "1000px", boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)" }}
   >
-    <img src={project.image} alt={project.name} className="w-full h-56 object-cover rounded-md mb-4" />
-    <h3 className="text-xl font-bold text-gray-800">{project.name}</h3>
-    <p className="text-gray-600 mt-1">{project.description}</p>
-    <a target="_blank" href={project.link} className="mt-1 inline-block text-blue-500 hover:text-blue-700 transition-all">
-      View Project →
-    </a>
+    {/* Image */}
+    <img
+      src={project.image}
+      alt={project.name}
+      className="w-full h-56 object-cover rounded-md"
+    />
+
+    {/* Text Content */}
+    <div className="flex flex-col flex-grow p-4">
+      <h3 className="text-xl font-bold text-gray-800">{project.name}</h3>
+      <p className="text-gray-600 mt-1">{project.description}</p>
+    </div>
+
+    {/* Button at the bottom */}
+    <div className="flex justify-center p-4">
+      <a
+        target="_blank"
+        href={project.link}
+        className="mt-auto inline-block px-4 py-2 bg-gray-200 text-blue-500 hover:text-blue-700 transition-all rounded-md shadow-lg"
+      >
+        View Project
+      </a>
+    </div>
   </motion.div>
 );
 
@@ -53,21 +71,23 @@ const Projects = () => {
                    text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-purple-800 
                    drop-shadow-lg animate-bounce">Projects</h2>
         <div className="hidden md:flex items-center justify-between relative">
-          <button onClick={prevSlide} className="absolute left-0 p-2 bg-gray-300 rounded-full">◀</button>
-          <div className="grid grid-cols-3 gap-6 w-full px-8">
+          <button onClick={prevSlide} className="absolute left-0 p-2 bg-primary rounded-full cursor-pointer">
+            <FiChevronLeft size={24} className="text-white" />
+          </button>
+          <div className="grid grid-cols-3 gap-6 w-full px-8 ">
             {visibleProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>
-          <button onClick={nextSlide} className="absolute right-0 p-2 bg-gray-300 rounded-full">▶</button>
+          {/* <FiChevronLeft size={24} className="text-white" /> */}
+          <button onClick={nextSlide} className="absolute right-0 p-2 bg-primary rounded-full cursor-pointer"><FiChevronRight size={24} className="text-white" /></button>
         </div>
         <div className="md:hidden relative flex items-center justify-center w-full">
-          
           <div className="w-full ">
             <ProjectCard project={projects[currentIndex]} />
           </div>
-          <button onClick={prevSlide} className="absolute top-1/2 left-2 transform -translate-y-1/2 p-2 bg-gray-300 rounded-full">◀</button>
-          <button onClick={nextSlide} className="absolute right-0 p-2 bg-gray-300 rounded-full">▶</button>
+          <button onClick={prevSlide} className="absolute top-1/2 left-2 transform -translate-y-1/2 p-2 bg-gray-300 rounded-full cursor-pointer"><FiChevronLeft size={24} className="text-white" /></button>
+          <button onClick={nextSlide} className="absolute right-0 p-2 bg-gray-300 rounded-full cursor-pointer"><FiChevronRight size={24} className="text-white" /></button>
         </div>
       </div>
     </motion.section>
