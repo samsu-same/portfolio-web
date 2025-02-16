@@ -10,8 +10,9 @@ const projects = [
   { id: 5, name: "Next IAS Education", description: "An innovative project for edutech field.", link: "https://ias-app-six.vercel.app/", image: "/images/nextias.png" },
   { id: 6, name: "Dashboard", description: "An innovative project built on Next js.", link: "#", image: "/images/dashboard.png" },
   { id: 7, name: "Hotel Clermont", description: "An innovative hotel booking project built on Next js.", link: "https://www.hotelclermont.com/", image: "/images/hotelclermont.png" },
-  { id: 8, name: "Expense Tracker", description: "Helps ypu track your financial goal.", link: "https://expense-tracker-pi-gilt.vercel.app/dashboard", image: "/images/expensetracker.png" },
-  { id: 9, name: "Sacred Heart School", description: "An intuitive and modern website for Sacred Heart School, designed to enhance the learning experience with seamless navigation and engaging features.", link: "https://sacred-heart-school.vercel.app/", image: "/images/shs.png" },
+  { id: 8, name: "Gausiya Tyre Works", description: "All your tyre soltion at one place", link: "https://gausiya-tyres.vercel.app/", image: "/images/gausiya-tyre.png" },
+  { id: 9, name: "Expense Tracker", description: "Helps ypu track your financial goal.", link: "https://expense-tracker-pi-gilt.vercel.app/dashboard", image: "/images/expensetracker.png" },
+  { id: 10, name: "Sacred Heart School", description: "An intuitive and modern website for Sacred Heart School, designed to enhance the learning experience with seamless navigation and engaging features.", link: "https://sacred-heart-school.vercel.app/", image: "/images/shs.png" },
 ];
 
 const ProjectCard = ({ project }) => (
