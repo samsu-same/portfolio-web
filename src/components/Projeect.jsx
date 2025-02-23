@@ -11,8 +11,9 @@ const projects = [
   { id: 6, name: "Dashboard", description: "An innovative project built on Next js.", link: "#", image: "/images/dashboard.png" },
   { id: 7, name: "Hotel Clermont", description: "An innovative hotel booking project built on Next js.", link: "https://www.hotelclermont.com/", image: "/images/hotelclermont.png" },
   { id: 8, name: "Gausiya Tyre Works", description: "All your tyre soltion at one place", link: "https://gausiya-tyres.vercel.app/", image: "/images/gausiya-tyre.png" },
-  { id: 9, name: "Expense Tracker", description: "Helps ypu track your financial goal.", link: "https://expense-tracker-pi-gilt.vercel.app/dashboard", image: "/images/expensetracker.png" },
-  { id: 10, name: "Sacred Heart School", description: "An intuitive and modern website for Sacred Heart School, designed to enhance the learning experience with seamless navigation and engaging features.", link: "https://sacred-heart-school.vercel.app/", image: "/images/shs.png" },
+  { id: 9, name: "Sacred Heart School", description: "An intuitive and modern website for Sacred Heart School, designed to enhance the learning experience with seamless navigation and engaging features.", link: "https://sacred-heart-school.vercel.app/", image: "/images/shs.png" },
+  { id: 10, name: "InstaNinja", description: "You can download instagram videos, reels at this place", link: "https://insta-reels-downloader-nu.vercel.app/", image: "/images/instareels.png" },
+  { id: 11, name: "Expense Tracker", description: "Helps ypu track your financial goal.", link: "https://expense-tracker-pi-gilt.vercel.app/dashboard", image: "/images/expensetracker.png" },
 ];
 
 const ProjectCard = ({ project }) => (
@@ -39,7 +40,7 @@ const ProjectCard = ({ project }) => (
       <a
         target="_blank"
         href={project.link}
-        className="mt-auto inline-block px-4 py-2 bg-gray-200 text-blue-500 hover:text-blue-700 transition-all rounded-md shadow-lg"
+        className="mt-auto inline-block px-4 py-2 bg-gray-200 text-primary hover:text-hoverPrimary transition-all rounded-md shadow-lg"
       >
         View Project
       </a>
@@ -87,8 +88,8 @@ const Projects = () => {
           <div className="w-full ">
             <ProjectCard project={projects[currentIndex]} />
           </div>
-          <button onClick={prevSlide} className="absolute top-1/2 left-2 transform -translate-y-1/2 p-2 bg-gray-300 rounded-full cursor-pointer"><FiChevronLeft size={24} className="text-white" /></button>
-          <button onClick={nextSlide} className="absolute right-0 p-2 bg-gray-300 rounded-full cursor-pointer"><FiChevronRight size={24} className="text-white" /></button>
+          <button onClick={prevSlide} className="absolute top-1/2 left-2 transform -translate-y-1/2 p-2 bg-primary rounded-full cursor-pointer"><FiChevronLeft size={24} className="text-white" /></button>
+          <button onClick={nextSlide} className="absolute right-0 p-2 bg-primary rounded-full cursor-pointer"><FiChevronRight size={24} className="text-white" /></button>
         </div>
       </div>
     </motion.section>
