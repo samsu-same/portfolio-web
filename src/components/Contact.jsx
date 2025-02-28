@@ -35,7 +35,7 @@ const Contact = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       id="contact"
-      className="p-4 bg-gray-50"
+      className="p-4 bg-white"
     >
           <div className="container mx-auto">
               {/* Centered Header with Icon */}
@@ -106,26 +106,25 @@ const Contact = () => {
                       </motion.div>
 
                       {/* Instagram QR Code Card */}
-                      {/* <motion.div
-                          className="flex flex-col md:flex-row items-center justify-center bg-gray-800 p-6 rounded-lg shadow-lg"
+                      <motion.div
+                          className="flex flex-col md:flex-row items-center justify-center "
                           initial={{ opacity: 0, y: 50 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.5 }}
                       >
-                          <div className="w-full md:w-4/5  flex justify-center">
+                          <div className="w-full rounded-lg shadow-md flex justify-center p-2">
                               <img
                                   src="/images/instagram.jpg"
                                   alt="Instagram QR Code"
-                                  className="w-full h-64 md:h-96 object-cover rounded-lg shadow-md mask mask-circle"
-                              />
-                              
+                                  className="w-full h-64 md:h-96 object-contain  mask mask-circle"
+                              />      
                           </div>
 
-                          <div className="w-full md:w-1/5  flex flex-col items-center md:items-start text-center md:text-left mt-6 md:mt-0 md:ml-8">
+                          {/* <div className="w-full md:w-1/5  flex flex-col items-center md:items-start text-center md:text-left mt-6 md:mt-0 md:ml-8">
                               <h3 className="text-2xl font-semibold text-white">Instagram</h3>
                               <p className="text-gray-200 mt-2">Scan to follow me</p>
-                          </div>
-                      </motion.div> */}
+                          </div> */}
+                      </motion.div>
                       
                   </motion.div>
                   {/* Form and Cards Container */}
