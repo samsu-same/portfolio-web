@@ -194,7 +194,7 @@ const AboutMe = () => {
         About Me
       </motion.h2>
 
-      <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between">
         {/* Left Div - Image */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
