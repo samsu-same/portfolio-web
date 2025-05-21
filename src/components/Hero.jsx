@@ -275,7 +275,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-400"
+          className="text-5xl md:text-6xl font-extrabold py-4 mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-400 "
         >
           {headerText}
         </motion.h1>
