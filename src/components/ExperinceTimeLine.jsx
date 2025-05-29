@@ -2,27 +2,34 @@ import { motion } from "framer-motion";
 import { FaBriefcase } from "react-icons/fa";
 
 const experiences = [
-  {
+    {
     id: 1,
     title: "Full Stack Developer",
-    company: "Sutraa Technosoft pvt ltd",
-    duration: "Aug 2024 - Oct 2024",
+    company: "Codevue technology",
+    duration: "November 2024 - APresent",
     side: "right",
   },
   {
     id: 2,
-    title: "Web Developer | Internship",
-    company: "Third Eye Automation Pvt Ltd",
-    duration: "Oct 2022 - March 2024",
+    title: "Full Stack Developer",
+    company: "Sutraa Technosoft pvt ltd",
+    duration: "Aug 2024 - Oct 2024",
     side: "left",
   },
   {
     id: 3,
-    title: "FreeLancing | Internship",
-    company: "Codevue technology (WFH)",
-    duration: "March 2024 - Aug 2024",
+    title: "MERN Developer",
+    company: "Third Eye Automation Pvt Ltd",
+    duration: "Oct 2022 - March 2024",
     side: "right",
   },
+  // {
+  //   id: 4,
+  //   title: "MERN Developer",
+  //   company: "Codevue technology",
+  //   duration: "November 2024 - APresent",
+  //   side: "left",
+  // },
 ];
 
 const ExperienceTimeline = () => {
