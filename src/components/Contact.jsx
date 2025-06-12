@@ -20,15 +20,15 @@ const Contact = () => {
 
         // Check if all fields are filled
         if (!formData.name || !formData.email || !formData.message) {
-            alert("Please fill in all the fields before submitting.");
+            alert(`Please fill in all the fields before submitting.`);
             return;
         }
 
         // Display success alert
         alert(`Thank you, ${formData.name}! Your message has been sent successfully.`);
 
-        // Optionally, you can reset the form after submission
-        setFormData({ name: "", email: "", message: "" });
+        // reset the form after submission
+        setFormData({ name: "", email: "", message: "",phone: "", });
     };
     return (
         <motion.section
@@ -144,6 +144,7 @@ const Contact = () => {
                                     name="name"
                                     placeholder=""
                                     id="name"
+                                    required
                                     value={formData.name}
                                     onChange={handleChange}
                                     className=" w-full py-2 bg-gray-100 rounded-md placeholder:px-4 "
@@ -192,6 +193,7 @@ const Contact = () => {
                             ></textarea>
                             <button
                                 type="submit"
+                                onClick={handleSubmit}
                                 className="w-full p-3 bg-gradient-to-r from-pink-700 to-yellow-700 text-white font-bold rounded-full shadow-lg hover:shadow-2xl hover:from-yellow-500 hover:to-pink-500 transition-transform transform hover:scale-105 duration-300 cursor-pointer"
                             >
                                 Send Message

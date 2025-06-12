@@ -1,6 +1,6 @@
-// components/Statistics.jsx
+
 import React from 'react';
-import { FaProjectDiagram, FaUserClock, FaSmile } from 'react-icons/fa'; // Import icons from Font Awesome
+import { FaProjectDiagram, FaUserClock, FaSmile } from 'react-icons/fa'; 
 
 const Statistics = () => {
   const stats = [
@@ -8,19 +8,19 @@ const Statistics = () => {
       id: 1,
       value: "10+",
       label: "Projects Completed",
-      icon: <FaProjectDiagram className="w-12 h-12 mb-4 text-blue-500" />, // Add icon
+      icon: <FaProjectDiagram className="w-12 h-12 mb-4 text-blue-500" />, 
     },
     {
       id: 2,
-      value: "2+",
+      value: "3+",
       label: "Years of Experience",
-      icon: <FaUserClock className="w-12 h-12 mb-4 text-green-500" />, // Add icon
+      icon: <FaUserClock className="w-12 h-12 mb-4 text-green-500" />,
     },
     {
       id: 3,
       value: "100%",
       label: "Client Satisfaction",
-      icon: <FaSmile className="w-12 h-12 mb-4 text-yellow-500" />, // Add icon
+      icon: <FaSmile className="w-12 h-12 mb-4 text-yellow-500" />, 
     },
   ];
 
