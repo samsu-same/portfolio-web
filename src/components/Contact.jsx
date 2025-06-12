@@ -1,8 +1,7 @@
-
-
 import { motion } from "framer-motion";
-import { FaPhone, FaWhatsapp, FaEnvelope, FaInstagram } from "react-icons/fa"; // Icons for the header and cards
+import { FaPhone, FaWhatsapp, FaEnvelope, FaInstagram } from "react-icons/fa";
 import { useState } from "react";
+
 const Contact = () => {
     const [formData, setFormData] = useState({
         name: "",
@@ -11,25 +10,36 @@ const Contact = () => {
         message: "",
     });
 
+    const [errors, setErrors] = useState({});
+
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+
+        if (errors[name]) {
+            setErrors({ ...errors, [name]: "" });
+        }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const newErrors = {};
 
-        // Check if all fields are filled
-        if (!formData.name || !formData.email || !formData.message) {
-            alert(`Please fill in all the fields before submitting.`);
+        if (!formData.name.trim()) newErrors.name = "Name is required";
+        if (!formData.email.trim()) newErrors.email = "Email is required";
+        if (!formData.message.trim()) newErrors.message = "Message is required";
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
             return;
         }
 
-        // Display success alert
         alert(`Thank you, ${formData.name}! Your message has been sent successfully.`);
 
-        // reset the form after submission
-        setFormData({ name: "", email: "", message: "",phone: "", });
+        setFormData({ name: "", email: "", message: "", phone: "" });
+        setErrors({});
     };
+
     return (
         <motion.section
             initial={{ opacity: 0, y: 50 }}
@@ -39,7 +49,7 @@ const Contact = () => {
             className="p-4 bg-white"
         >
             <div className="max-w-7xl mx-auto">
-                {/* Centered Header with Icon */}
+                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -47,18 +57,19 @@ const Contact = () => {
                     className="text-center mb-12"
                 >
                     <h2 className="text-2xl md:text-5xl font-bold flex items-center justify-center gap-2 animate-bounce">
-                        <FaEnvelope className="text-purple-800" /> Get in <span className="text-purple-800">Touch</span></h2>
-                    <p className="text-gray-600 mt-2">Feel free to reach out to me for any inquiries or collaborations. </p>
+                        <FaEnvelope className="text-purple-800" /> Get in <span className="text-purple-800">Touch</span>
+                    </h2>
+                    <p className="text-gray-600 mt-2">Feel free to reach out to me for any inquiries or collaborations.</p>
                 </motion.div>
+
                 <div className="flex flex-col md:flex-row gap-8">
-                    {/* Cards on the right */}
+                    {/* Contact Cards */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.6 }}
                         className="w-full md:w-1/2 space-y-6"
                     >
-                        {/* Call Us Card */}
                         <motion.div
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -74,7 +85,6 @@ const Contact = () => {
                             </div>
                         </motion.div>
 
-                        {/* WhatsApp Card */}
                         <motion.div
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -90,7 +100,6 @@ const Contact = () => {
                             </div>
                         </motion.div>
 
-                        {/* Email Us Card */}
                         <motion.div
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -106,9 +115,8 @@ const Contact = () => {
                             </div>
                         </motion.div>
 
-                        {/* Instagram QR Code Card */}
                         <motion.div
-                            className="flex flex-col md:flex-row items-center justify-center "
+                            className="flex flex-col md:flex-row items-center justify-center"
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
@@ -117,19 +125,13 @@ const Contact = () => {
                                 <img
                                     src="/images/instagram.jpg"
                                     alt="Instagram QR Code"
-                                    className="w-full h-64 md:h-96 object-contain  mask mask-circle"
+                                    className="w-full h-64 md:h-96 object-contain mask mask-circle"
                                 />
                             </div>
-
-                            {/* <div className="w-full md:w-1/5  flex flex-col items-center md:items-start text-center md:text-left mt-6 md:mt-0 md:ml-8">
-                              <h3 className="text-2xl font-semibold text-white">Instagram</h3>
-                              <p className="text-gray-200 mt-2">Scan to follow me</p>
-                          </div> */}
                         </motion.div>
-
                     </motion.div>
-                    {/* Form and Cards Container */}
-                    {/* Form on the left */}
+
+                    {/* Form */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -138,59 +140,69 @@ const Contact = () => {
                     >
                         <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
                         <form className="space-y-4">
+                            {/* Name Field */}
                             <div className="form-group w-full">
                                 <input
                                     type="text"
                                     name="name"
-                                    placeholder=""
                                     id="name"
-                                    required
+                                     placeholder=""
                                     value={formData.name}
                                     onChange={handleChange}
-                                    className=" w-full py-2 bg-gray-100 rounded-md placeholder:px-4 "
+                                    className="w-full py-2 bg-gray-100 rounded-md placeholder:px-4"
                                 />
                                 <label htmlFor="name" className="block text-sm font-medium mb-1">
                                     Enter Your Name
                                 </label>
+                                {errors.name && <p className="text-red-600 text-sm">{errors.name}</p>}
                             </div>
+
+                            {/* Phone Field */}
                             <div className="form-group w-full py-2">
                                 <input
                                     type="number"
                                     name="phone"
-                                    placeholder=""
                                     id="phone"
+                                     placeholder=""
                                     value={formData.phone}
                                     onChange={handleChange}
-                                    className=" w-full py-2 bg-gray-100 rounded-md placeholder:px-4 "
+                                    className="w-full py-2 bg-gray-100 rounded-md placeholder:px-4"
                                 />
                                 <label htmlFor="phone" className="block text-sm font-medium mb-1">
                                     Your Phone
                                 </label>
                             </div>
 
+                            {/* Email Field */}
                             <div className="form-group w-full">
                                 <input
                                     type="text"
                                     name="email"
-                                    placeholder=""
                                     id="email"
+                                     placeholder=""
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className=" w-full py-2 bg-gray-100 rounded-md placeholder:px-4 "
+                                    className="w-full py-2 bg-gray-100 rounded-md placeholder:px-4"
                                 />
                                 <label htmlFor="email" className="block text-sm font-medium mb-1">
                                     Your Email
                                 </label>
+                                {errors.email && <p className="text-red-600 text-sm">{errors.email}</p>}
                             </div>
 
-                            <textarea
-                                name="message"
-                                placeholder="Your Message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-800"
-                                rows="5"
-                            ></textarea>
+                            {/* Message Field */}
+                            <div className="form-group w-full">
+                                <textarea
+                                    name="message"
+                                    placeholder="Your Message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-800"
+                                    rows="5"
+                                ></textarea>
+                                {errors.message && <p className="text-red-600 text-sm">{errors.message}</p>}
+                            </div>
+
                             <button
                                 type="submit"
                                 onClick={handleSubmit}

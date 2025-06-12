@@ -48,7 +48,7 @@ const Hobbies = () => {
   return (
     <section id="hobbies" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Hobbies & Interests</h2>
+        <h2 className="text-3xl font-bold text-center mb-8 text-purple-800">Hobbies & Interests</h2>
         <Swiper
           modules={[Navigation]}
           spaceBetween={30}
@@ -70,7 +70,7 @@ const Hobbies = () => {
             <SwiperSlide key={hobby.id}>
               <div className="bg-gray-50 p-6 rounded-lg shadow-md text-center h-full">
                 <span className="text-4xl mb-4">{hobby.icon}</span>
-                <h3 className="text-xl font-semibold mb-2">{hobby.name}</h3>
+                <h3 className="text-xl font-semibold mb-2 text-purple-800">{hobby.name}</h3>
                 <p className="text-gray-600">{hobby.description}</p>
               </div>
             </SwiperSlide>

@@ -31,7 +31,7 @@ function App() {
       <AboutMe />
       <Skills />
       <Projects />
-      <Statistics />
+      {/* <Statistics /> */}
       <ExperienceTimeline />
       <Education />
       <Testimonials />

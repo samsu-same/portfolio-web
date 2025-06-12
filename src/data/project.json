@@ -1,79 +1,107 @@
 [
   {
     "id": 1,
-    "name": "Portfolio Website",
-    "description": "An innovative project to showcase my projects, skills education",
-    "link": "https://portfolio-web-orpin-two.vercel.app/",
-    "image": "/images/portfolio.png"
-  },
-  {
-    "id": 2,
     "name": "Teghiya Travels",
     "description": "Bus Ticket Booking Application. Developing a user-friendly bus booking platform with features like dynamic bus listing, filtering, seat selection, cart, and checkout system.",
     "link": "https://www.teghiyatravels.in/",
     "image": "/images/teghiyatravels.png"
   },
   {
-    "id": 3,
+    "id": 2,
     "name": "Yingkiong Store",
     "description": "A E-commerce website for fruits, vegetables delivery. Developed Features: product listing, cart, checkout, search, user authentication, order emails. Implemented lazy loading.",
-    "link": "#",
+    "link": "https://arunachal-store.vercel.app/",
     "image": "/images/yingkiongstore.png"
   },
   {
+    "id": 3,
+    "name": "Ayah of Truth",
+    "description": "A peaceful Islamic website sharing daily Quranic verses and reminders.",
+    "link": "https://ayahoftruth.site",
+    "image": "/images/ayah.png"
+  },
+  {
     "id": 4,
+    "name": "YouTube Downloader",
+    "description": "Easily download YouTube videos and convert them to MP4/MP3 formats.",
+    "link": "https://savefromweb.site",
+    "image": "/images/youtubedownloader.png"
+  },
+  {
+    "id": 5,
+    "name": "InstaNinja",
+    "description": "You can download Instagram videos, reels at this place",
+    "link": "https://snapinsta.fun/",
+    "image": "/images/instareels.png"
+  },
+  {
+    "id": 6,
+    "name": "Multi Tools Hub NinjaTool",
+    "description": "A collection of useful everyday tools like password generator, unit converter, and more.",
+    "link": "https://smartlytools.fun/",
+    "image": "/images/ninjatool.png"
+  },
+  {
+    "id": 7,
     "name": "AK Construction",
     "description": "A comprehensive and user-friendly website for a construction company, focusing on showcasing their services, portfolio, and client testimonials",
     "link": "https://akconstruction.tech/",
     "image": "/images/akconstruction.png"
   },
   {
-    "id": 5,
+    "id": 8,
     "name": "Next IAS Education",
     "description": "An innovative project for edutech field.",
     "link": "https://ias-app-six.vercel.app/",
     "image": "/images/nextias.png"
   },
   {
-    "id": 6,
+    "id": 9,
     "name": "Dashboard",
     "description": "An innovative project built on Next js.",
     "link": "#",
     "image": "/images/dashboard.png"
   },
   {
-    "id": 7,
+    "id": 10,
     "name": "Hotel Clermont",
     "description": "An innovative hotel booking project built on Next js.",
     "link": "https://www.hotelclermont.com/",
     "image": "/images/hotelclermont.png"
   },
   {
-    "id": 8,
+    "id": 11,
     "name": "Gausiya Tyre Works",
     "description": "All your tyre solution at one place",
     "link": "https://gausiya-tyres.vercel.app/",
     "image": "/images/gausiya-tyre.png"
   },
   {
-    "id": 9,
+    "id": 12,
     "name": "Sacred Heart School",
     "description": "An intuitive and modern website for Sacred Heart School, designed to enhance the learning experience with seamless navigation and engaging features.",
     "link": "https://sacred-heart-school.vercel.app/",
     "image": "/images/shs.png"
   },
   {
-    "id": 10,
-    "name": "InstaNinja",
-    "description": "You can download Instagram videos, reels at this place",
-    "link": "https://insta-reels-downloader-nu.vercel.app/",
-    "image": "/images/instareels.png"
+    "id": 13,
+    "name": "Image Resizer",
+    "description": "Resize images easily before uploading or sharing online.",
+    "link": "https://imageresize.in/",
+    "image": "/images/ninjapix.png"
   },
   {
-    "id": 11,
+    "id": 14,
     "name": "Expense Tracker",
     "description": "Helps you track your financial goal.",
     "link": "https://expense-tracker-pi-gilt.vercel.app/dashboard",
     "image": "/images/expensetracker.png"
+  },
+  {
+    "id": 15,
+    "name": "Portfolio Website",
+    "description": "An innovative project to showcase my projects, skills education",
+    "link": "https://portfolio-web-orpin-two.vercel.app/",
+    "image": "/images/portfolio.png"
   }
 ]
