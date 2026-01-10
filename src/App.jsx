@@ -13,7 +13,8 @@ import ExperienceTimeline from './components/ExperinceTimeLine'
 
 import Footer from './components/Footer'
 import Header from './components/Header'
-import Hero from './components/Hero'
+import Hero3d from './components/Hero/Hero3d'
+
 import Hobbies from './components/MyHobbies'
 import Projects from './components/Projeect'
 import Skills from './components/Skills'
@@ -26,7 +27,10 @@ function App() {
   return (
     <>
       <Header />
-      <Hero />
+      <div className='pt-16'>
+           <Hero3d />
+      </div>
+   
 
       <AboutMe />
       <Skills />
