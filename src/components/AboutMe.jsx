@@ -444,7 +444,7 @@ const AboutMe = () => {
                 </div>
                 
                 {/* Role indicators */}
-                <div className="flex gap-2 mt-4">
+                <div className="flex gap-2 ">
                   {jobProfiles.map((profile, index) => (
                     <motion.button
                       key={index}
@@ -473,7 +473,7 @@ const AboutMe = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="text-gray-700 dark:text-gray-300 text-lg mb-10 leading-relaxed bg-gradient-to-r from-gray-100 to-transparent dark:from-gray-800/50 dark:to-transparent p-6 rounded-xl"
+                className="text-gray-700 dark:text-gray-300 text-md  leading-relaxed bg-gradient-to-r from-gray-100 to-transparent dark:from-gray-800/50 dark:to-transparent p-6 rounded-xl"
               >
                 I'm a passionate Full-Stack Developer based in Patna, Bihar, India. With expertise in the MERN stack, I craft beautiful, functional web applications that deliver exceptional user experiences. I thrive on turning complex problems into elegant solutions and continuously expanding my skills in modern web technologies.
               </motion.p>
@@ -483,12 +483,12 @@ const AboutMe = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10"
+                className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4"
               >
                 {[
                   { icon: <FaPhone />, label: "Phone", value: "+91-7542067763", color: "from-blue-500 to-cyan-500" },
                   { icon: <FaEnvelope />, label: "Email", value: "biosamsuddin@gmail.com", color: "from-purple-500 to-pink-500" },
-                  { icon: <FaMapMarkerAlt />, label: "Location", value: "Patna, Bihar, India", color: "from-green-500 to-emerald-500" }
+                  { icon: <FaMapMarkerAlt />, label: "Location", value: "Delhi, India", color: "from-green-500 to-emerald-500" }
                 ].map((item, index) => (
                   <motion.div
                     key={index}
@@ -501,7 +501,7 @@ const AboutMe = () => {
                       </div>
                       <span className="font-semibold">{item.label}</span>
                     </div>
-                    <p className="font-bold text-lg">{item.value}</p>
+                    <p className="font-bold text-sm">{item.value}</p>
                   </motion.div>
                 ))}
               </motion.div>
