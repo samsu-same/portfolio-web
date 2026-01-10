@@ -34,7 +34,7 @@ function App() {
       {/* <Statistics /> */}
       <ExperienceTimeline />
       <Education />
-      <Testimonials />
+      {/* <Testimonials /> */}
       {/* <Blog /> */}
       {/* <Awards /> */}
       <Hobbies />
