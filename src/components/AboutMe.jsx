@@ -488,7 +488,7 @@ const AboutMe = () => {
                 {[
                   { icon: <FaPhone />, label: "Phone", value: "+91-7542067763", color: "from-blue-500 to-cyan-500" },
                   { icon: <FaEnvelope />, label: "Email", value: "biosamsuddin@gmail.com", color: "from-purple-500 to-pink-500" },
-                  { icon: <FaMapMarkerAlt />, label: "Location", value: "Delhi, India", color: "from-green-500 to-emerald-500" }
+                  { icon: <FaMapMarkerAlt />, label: "Location", value: "Bangalore, India", color: "from-green-500 to-emerald-500" }
                 ].map((item, index) => (
                   <motion.div
                     key={index}
