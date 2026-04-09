@@ -475,7 +475,7 @@ const AboutMe = () => {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="text-gray-700 dark:text-gray-300 text-md  leading-relaxed bg-gradient-to-r from-gray-100 to-transparent dark:from-gray-800/50 dark:to-transparent p-6 rounded-xl"
               >
-                I'm a passionate Full-Stack Developer based in Patna, Bihar, India. With expertise in the MERN stack, I craft beautiful, functional web applications that deliver exceptional user experiences. I thrive on turning complex problems into elegant solutions and continuously expanding my skills in modern web technologies.
+                I'm a passionate Full-Stack Developer based in Bengaluru, India. With expertise in the MERN stack, I craft beautiful, functional web applications that deliver exceptional user experiences. I thrive on turning complex problems into elegant solutions and continuously expanding my skills in modern web technologies.
               </motion.p>
 
               {/* Contact Info Cards */}

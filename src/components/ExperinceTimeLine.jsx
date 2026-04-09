@@ -146,10 +146,10 @@ const experiences = [
   {
     id: 1,
     title: "Full Stack Developer",
-    company: "Codevue Technology Pvt Ltd",
+    company: "NV Data Systems Pvt Ltd",
     start: "2024-04-01",
     end: "2025-12-29",
-    durationLabel: "April 2024 – Dec 2025",
+    durationLabel: "April 2024 – Jan 2026",
     side: "right",
     location: "Remote",
     achievements: [

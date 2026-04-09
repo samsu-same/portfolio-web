@@ -1,11 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa"; // Import an icon from react-icons
-
+import { RESUME_URL } from "../constant";
 const AnimatedButton = () => {
+
   return (
     <motion.a
-      href="https://drive.google.com/file/d/10yQb5ZTfkP4mC7Ukehr7EmAos9SABD32/view?usp=sharing"
+      href={RESUME_URL}
       target="_blank"
       className="relative px-8 py-3 bg-gradient-to-r from-pink-700 to-yellow-700 text-white font-bold rounded-full shadow-lg hover:shadow-2xl hover:from-yellow-500 hover:to-pink-500 transition-transform transform hover:scale-105 duration-300 flex items-center justify-center overflow-hidden cursor-pointer"
       whileHover="hover"

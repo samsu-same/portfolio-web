@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars, Float, Text3D, Center } from "@react-three/drei";
+import {RESUME_URL} from '../../constant';
 import * as THREE from "three";
 import { 
   FaLinkedin, 
@@ -251,7 +252,7 @@ const Hero3d = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -50 }}
                   transition={{ duration: 0.5 }}
-                  className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"
+                  className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight"
                 >
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400">
                     {headers[currentHeader]}
@@ -269,7 +270,7 @@ const Hero3d = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
-                  className="text-lg md:text-xl text-gray-300 max-w-2xl"
+                  className="text-md md:text-lg text-gray-300 max-w-2xl"
                 >
                   {paragraphs[currentParagraph]}
                 </motion.p>
@@ -306,7 +307,7 @@ const Hero3d = () => {
               className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start"
             >
               <motion.a
-                href="https://drive.google.com/file/d/10yQb5ZTfkP4mC7Ukehr7EmAos9SABD32/view?usp=sharing"
+                href={RESUME_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
