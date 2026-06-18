@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars, Float, Text3D, Center } from "@react-three/drei";
-import {RESUME_URL} from '../../constant';
+import {RESUME_URL,socialLinks} from '../../constant';
 import * as THREE from "three";
 import { 
   FaLinkedin, 
@@ -342,12 +342,7 @@ const Hero3d = () => {
               transition={{ delay: 0.8 }}
               className="flex gap-6 justify-center lg:justify-start"
             >
-              {[
-                { Icon: FaLinkedin, href: "https://www.linkedin.com/in/samsuddin-ansari-232904143/", color: "hover:text-blue-400", bg: "hover:bg-blue-500/20" },
-                { Icon: FaGithub, href: "https://github.com/Ninjajuk", color: "hover:text-gray-100", bg: "hover:bg-gray-500/20" },
-                { Icon: FaInstagram, href: "https://www.instagram.com/samsu_same", color: "hover:text-pink-400", bg: "hover:bg-pink-500/20" },
-                { Icon: FaCode, href: "#projects", color: "hover:text-green-400", bg: "hover:bg-green-500/20" },
-              ].map((social, index) => (
+              {socialLinks.map((social, index) => (
                 <motion.a
                   key={index}
                   href={social.href}

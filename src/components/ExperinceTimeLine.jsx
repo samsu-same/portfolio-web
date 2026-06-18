@@ -149,7 +149,7 @@ const experiences = [
     company: "SWIFT SOLUTIONS Pvt Ltd",
     start: "2024-04-01",
     end: "2025-12-29",
-    durationLabel: "April 2024 – Jan 2026",
+    durationLabel: "July 2024 – Present",
     side: "right",
     location: "Remote",
     achievements: [

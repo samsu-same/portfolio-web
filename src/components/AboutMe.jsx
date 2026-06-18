@@ -276,7 +276,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaCode, FaServer, FaPaintBrush, FaWrench, FaBuilding } from 'react-icons/fa';
 import AnimatedButton from './AnimatedButoon';
-
+import {myTechStack} from '../constant'
 
 const AboutMe = () => {
   const jobProfiles = [
@@ -415,7 +415,7 @@ const AboutMe = () => {
               >
                 Hi, I'm{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
-                  Samsuddin
+                  Samsuddin Ansari
                 </span>
               </motion.h1>
 
@@ -486,7 +486,7 @@ const AboutMe = () => {
                 className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4"
               >
                 {[
-                  { icon: <FaPhone />, label: "Phone", value: "+91-7542067763", color: "from-blue-500 to-cyan-500" },
+                  { icon: <FaPhone />, label: "Phone", value:"+91-9288067764", color: "from-blue-500 to-cyan-500" },
                   { icon: <FaEnvelope />, label: "Email", value: "biosamsuddin@gmail.com", color: "from-purple-500 to-pink-500" },
                   { icon: <FaMapMarkerAlt />, label: "Location", value: "Bangalore, India", color: "from-green-500 to-emerald-500" }
                 ].map((item, index) => (
@@ -515,7 +515,7 @@ const AboutMe = () => {
               >
                 <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">Technologies I Work With</h3>
                 <div className="flex flex-wrap gap-3">
-                  {["React", "Node.js", "MongoDB", "Express", "JavaScript", "TypeScript", "Tailwind CSS", "Next.js"].map((tech, index) => (
+                  {myTechStack.map((tech, index) => (
                     <motion.span
                       key={tech}
                       initial={{ opacity: 0, scale: 0 }}
