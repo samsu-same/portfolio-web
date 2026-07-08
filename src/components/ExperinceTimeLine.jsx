@@ -149,7 +149,7 @@ const experiences = [
     company: "SWIFT SOLUTIONS Pvt Ltd",
     start: "2024-04-01",
     end: "2025-12-29",
-    durationLabel: "July 2024 – Present",
+    durationLabel: "July 2022 – Present",
     side: "right",
     location: "Remote",
     achievements: [
@@ -160,25 +160,25 @@ const experiences = [
     tech: ["React", "Node.js", "MongoDB", "AWS"],
     color: "from-blue-500 to-cyan-500"
   },
+  // {
+  //   id: 2,
+  //   title: "MERN Stack Developer",
+  //   company: "Third Eye Automation Pvt Ltd",
+  //   start: "2022-10-01",
+  //   end: "2024-03-01",
+  //   durationLabel: "Oct 2022 – March 2024",
+  //   side: "left",
+  //   location: "Bengaluru, India",
+  //   achievements: [
+  //     "Developed ERP system serving 500+ users",
+  //     "Reduced load time by 60%",
+  //     "Implemented real-time features"
+  //   ],
+  //   tech: ["MongoDB", "Express", "React", "Node.js"],
+  //   color: "from-purple-500 to-pink-500"
+  // },
   {
     id: 2,
-    title: "MERN Stack Developer",
-    company: "Third Eye Automation Pvt Ltd",
-    start: "2022-10-01",
-    end: "2024-03-01",
-    durationLabel: "Oct 2022 – March 2024",
-    side: "left",
-    location: "Bengaluru, India",
-    achievements: [
-      "Developed ERP system serving 500+ users",
-      "Reduced load time by 60%",
-      "Implemented real-time features"
-    ],
-    tech: ["MongoDB", "Express", "React", "Node.js"],
-    color: "from-purple-500 to-pink-500"
-  },
-  {
-    id: 3,
     title: "Civil Engineer",
     company: "ABCI Infrastructure Pvt Ltd",
     start: "2019-12-01",
