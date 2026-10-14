@@ -1,9 +1,7 @@
 
 import './App.css'
 import AboutMe from './components/AboutMe'
-import About from './components/AboutUs'
-import Awards from './components/AwardsCertification'
-import Blog from './components/Blog'
+
 import CallToAction from './components/CalltoAction'
 
 
@@ -18,8 +16,7 @@ import Hero3d from './components/Hero/Hero3d'
 import Hobbies from './components/MyHobbies'
 import Projects from './components/Projeect'
 import Skills from './components/Skills'
-import Statistics from './components/Statistics'
-import Testimonials from './components/Testimonial'
+
 
 function App() {
 

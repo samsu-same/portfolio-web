@@ -381,7 +381,7 @@ const AboutMe = () => {
               <div className="relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-300">
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-blue-100 dark:to-gray-900 opacity-50"></div>
                 <img
-                  src="/images/samsu.png"
+                  src="https://atfheruscdrriozd.public.blob.vercel-storage.com/samsu.png"
                   alt="Samsuddin Ansari"
                   className="w-full h-auto object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-500"
                 />

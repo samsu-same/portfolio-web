@@ -1,84 +1,215 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import projects from '../data/project.json'
+import projects from "../data/project.json";
 
-const ProjectCard = ({ project }) => (
-  <motion.div
-    whileHover={{ scale: 1.05, rotateY: 5 }}
-    className="p-4 bg-white rounded-2xl shadow-2xl border border-gray-200 transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 w-full h-92  cursor-pointer flex flex-col "
-    style={{ perspective: "1000px", boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)" }}
-  >
-    {/* Image */}
-    <img
-      src={project.image}
-      alt={project.name}
-      className="w-full h-36 object-cover rounded-md"
-    />
+const ProjectCard = ({ project }) => {
+  return (
+    <motion.div
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.25 }}
+      className="flex h-full w-full flex-col rounded-2xl border border-gray-200 bg-white p-4 shadow-lg transition-shadow hover:shadow-2xl"
+      style={{
+        boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)",
+      }}
+    >
+      {/* Project Image */}
+      <img
+        src={project.image}
+        alt={project.name}
+        loading="lazy"
+        className="h-40 w-full rounded-lg bg-gray-100 object-cover"
+      />
 
-    {/* Text Content */}
-    <div className="flex flex-col  p-4">
-      <h3 className="text-xl font-bold text-gray-800">{project.name}</h3>
-      <p className="text-gray-600 mt-1 text-sm">{project.description}</p>
-    </div>
+      {/* Project Details */}
+      <div className="flex flex-1 flex-col p-3">
+        <h3 className="text-xl font-bold text-gray-800">
+          {project.name}
+        </h3>
 
-    <div className="flex justify-center  mt-auto">
-        <a
-          target="_blank"
-          href={project.link}
-          className=" inline-block px-4 py-2 bg-gray-200 text-primary hover:text-hoverPrimary transition-all rounded-md shadow-lg"
-        >
-          View Project
-        </a>
+        <p className="mt-2 flex-1 text-sm leading-6 text-gray-600">
+          {project.description}
+        </p>
+
+        {/* Project Link */}
+        <div className="mt-5">
+          {project.link && project.link !== "#" ? (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-md bg-primary px-4 py-2 text-white shadow-md transition hover:opacity-80"
+            >
+              View Project
+            </a>
+          ) : (
+            <span className="inline-block rounded-md bg-gray-200 px-4 py-2 text-gray-500">
+              Coming Soon
+            </span>
+          )}
+        </div>
       </div>
+    </motion.div>
+  );
+};
 
-
-  </motion.div>
-);
+ProjectCard.propTypes = {
+  project: PropTypes.shape({
+    id: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]).isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    image: PropTypes.string.isRequired,
+    link: PropTypes.string,
+  }).isRequired,
+};
 
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const visibleProjects = projects.length > 3 ? projects.slice(currentIndex, currentIndex + 3) : projects;
+  const totalProjects = projects.length;
+
+  if (totalProjects === 0) {
+    return null;
+  }
+
+  // Display three projects on desktop, wrapping around at the end.
+  const visibleProjects = Array.from(
+    { length: Math.min(3, totalProjects) },
+    (_, index) => projects[(currentIndex + index) % totalProjects]
+  );
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex + 1) % totalProjects
+    );
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + totalProjects) % totalProjects
+    );
   };
 
   return (
     <motion.section
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
       id="projects"
-      className="p-4 bg-white"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.5 }}
+      className="bg-white px-4 py-10 sm:px-6 md:py-16"
     >
-      <div className="max-w-7xl mx-auto relative">
-        <h2 className="text-5xl md:text-6xl font-extrabold py-12 text-center
-                   text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-purple-800 
-                   drop-shadow-lg animate-bounce">Projects</h2>
-        <div className="hidden md:flex items-center justify-between relative">
-          <button onClick={prevSlide} className="absolute left-0 p-2 bg-primary rounded-full cursor-pointer">
-            <FiChevronLeft size={24} className="text-white" />
+      <div className="relative mx-auto max-w-7xl">
+        {/* Section Heading */}
+        <h2 className="mb-10 bg-gradient-to-r from-blue-800 to-purple-800 bg-clip-text text-center text-4xl font-extrabold text-transparent sm:text-5xl md:mb-12">
+          Projects
+        </h2>
+
+        {/* Desktop Slider */}
+        <div className="hidden items-stretch gap-4 md:flex">
+          <button
+            type="button"
+            onClick={prevSlide}
+            aria-label="Previous projects"
+            className="my-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-md transition hover:scale-105"
+          >
+            <FiChevronLeft size={24} />
           </button>
-          <div className="grid grid-cols-3 gap-6 w-full px-8 ">
-            {visibleProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+
+          <div className="grid min-w-0 flex-1 grid-cols-3 items-stretch gap-5 lg:gap-6">
+            <AnimatePresence initial={false} mode="popLayout">
+              {visibleProjects.map((project, index) => (
+                <motion.div
+                  key={`${project.id}-${currentIndex}`}
+                  initial={{ opacity: 0, x: 15 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -15 }}
+                  transition={{
+                    duration: 0.2,
+                    delay: index * 0.04,
+                  }}
+                  className="min-w-0"
+                >
+                  <ProjectCard project={project} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+
+          <button
+            type="button"
+            onClick={nextSlide}
+            aria-label="Next projects"
+            className="my-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-md transition hover:scale-105"
+          >
+            <FiChevronRight size={24} />
+          </button>
+        </div>
+
+        {/* Mobile Slider */}
+        <div className="mx-auto max-w-lg md:hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.2 }}
+            >
+              <ProjectCard project={projects[currentIndex]} />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Mobile Navigation */}
+          <div className="mt-5 flex items-center justify-center gap-6">
+            <button
+              type="button"
+              onClick={prevSlide}
+              aria-label="Previous project"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white shadow-md transition hover:opacity-80"
+            >
+              <FiChevronLeft size={22} />
+            </button>
+
+            <span className="text-sm font-medium text-gray-500">
+              {currentIndex + 1} / {totalProjects}
+            </span>
+
+            <button
+              type="button"
+              onClick={nextSlide}
+              aria-label="Next project"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white shadow-md transition hover:opacity-80"
+            >
+              <FiChevronRight size={22} />
+            </button>
+          </div>
+        </div>
+
+        {/* Desktop Pagination */}
+        {totalProjects > 1 && (
+          <div className="mt-8 hidden flex-wrap justify-center gap-2 md:flex">
+            {projects.map((project, index) => (
+              <button
+                key={project.id}
+                type="button"
+                onClick={() => setCurrentIndex(index)}
+                aria-label={`Go to project ${index + 1}`}
+                aria-current={
+                  currentIndex === index ? "true" : undefined
+                }
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  currentIndex === index
+                    ? "w-7 bg-primary"
+                    : "w-2 bg-gray-300 hover:bg-gray-400"
+                }`}
+              />
             ))}
           </div>
-          {/* <FiChevronLeft size={24} className="text-white" /> */}
-          <button onClick={nextSlide} className="absolute right-0 p-2 bg-primary rounded-full cursor-pointer"><FiChevronRight size={24} className="text-white" /></button>
-        </div>
-        <div className="md:hidden relative flex items-center justify-center w-full">
-          <div className="w-full ">
-            <ProjectCard project={projects[currentIndex]} />
-          </div>
-          <button onClick={prevSlide} className="absolute top-1/2 left-2 transform -translate-y-1/2 p-2 bg-primary rounded-full cursor-pointer"><FiChevronLeft size={24} className="text-white" /></button>
-          <button onClick={nextSlide} className="absolute right-0 p-2 bg-primary rounded-full cursor-pointer"><FiChevronRight size={24} className="text-white" /></button>
-        </div>
+        )}
       </div>
     </motion.section>
   );

@@ -123,7 +123,7 @@ const Contact = () => {
                         >
                             <div className="w-full rounded-lg shadow-md flex justify-center p-2">
                                 <img
-                                    src="/images/instagram.jpg"
+                                    src="https://atfheruscdrriozd.public.blob.vercel-storage.com/instagram.jpg"
                                     alt="Instagram QR Code"
                                     className="w-full h-64 md:h-96 object-contain mask mask-circle"
                                 />
