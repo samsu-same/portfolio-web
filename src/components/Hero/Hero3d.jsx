@@ -1,13 +1,13 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useReducedMotion,
+} from "framer-motion";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Stars, Float, Text3D, Center } from "@react-three/drei";
-import {RESUME_URL,socialLinks} from '../../constant';
-import * as THREE from "three";
-import { 
-  FaLinkedin, 
-  FaGithub, 
-  FaInstagram, 
+import { Float } from "@react-three/drei";
+
+import {
   FaDownload,
   FaArrowRight,
   FaStar,
@@ -18,379 +18,381 @@ import {
   FaReact,
   FaNodeJs,
   FaPython,
-  FaAws
-} from 'react-icons/fa';
-import { SiNextdotjs, SiTailwindcss, SiTypescript, SiMongodb } from 'react-icons/si';
+  FaAws,
+} from "react-icons/fa";
+
+import {
+  SiNextdotjs,
+  SiTailwindcss,
+  SiTypescript,
+  SiMongodb,
+} from "react-icons/si";
+
 import { IoSparkles } from "react-icons/io5";
+import { RESUME_URL, socialLinks } from "../../constant";
 
-// 3D Floating Icons Component
-function FloatingIcons() {
-  const meshRef = useRef();
-  const [hovered, setHovered] = useState(false);
+// ===============================
+// 3D FLOATING SHAPE
+// ===============================
 
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.3) * 0.2;
-      meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.3;
-      meshRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.7) * 0.5;
-    }
+function FloatingShape() {
+  const meshRef = useRef(null);
+
+  useFrame((state, delta) => {
+    if (!meshRef.current) return;
+
+    meshRef.current.rotation.x += delta * 0.12;
+    meshRef.current.rotation.y += delta * 0.18;
+    meshRef.current.position.y =
+      Math.sin(state.clock.elapsedTime * 0.5) * 0.18;
   });
 
   return (
-    <Float speed={3} rotationIntensity={1} floatIntensity={2}>
-      <mesh 
-        ref={meshRef}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
-        scale={hovered ? 1.2 : 1}
-      >
-        <torusKnotGeometry args={[1, 0.3, 128, 16]} />
-        <meshPhysicalMaterial
-          color="#8B5CF6"
-          metalness={0.8}
-          roughness={0.2}
-          clearcoat={1}
-          clearcoatRoughness={0}
-          envMapIntensity={1}
+    <Float speed={1.2} floatIntensity={0.5}>
+      <mesh ref={meshRef} scale={0.85}>
+        <torusKnotGeometry args={[1.1, 0.24, 96, 12]} />
+        <meshStandardMaterial
+          color="#8b5cf6"
+          metalness={0.4}
+          roughness={0.5}
+          wireframe
         />
       </mesh>
     </Float>
   );
 }
 
-// 3D Tech Logos
-function TechLogos() {
-  const logos = [
-    { Icon: FaReact, color: "#61DAFB", position: [-4, 2, 0] },
-    { Icon: SiNextdotjs, color: "#FFFFFF", position: [4, 2, 0] },
-    { Icon: FaNodeJs, color: "#68A063", position: [-4, -2, 0] },
-    { Icon: SiTypescript, color: "#3178C6", position: [4, -2, 0] },
-  ];
+// ===============================
+// 3D BACKGROUND
+// ===============================
 
+function HeroBackground() {
   return (
-    <>
-      {logos.map((logo, index) => (
-        <Float key={index} speed={index * 0.5 + 1} rotationIntensity={0.5} floatIntensity={1}>
-          <Text3D
-            font="/fonts/helvetiker_regular.typeface.json"
-            size={0.8}
-            height={0.2}
-            position={logo.position}
-          >
-            {logo.Icon.name.replace('Fa', '').replace('Si', '')}
-            <meshNormalMaterial color={logo.color} />
-          </Text3D>
-        </Float>
-      ))}
-    </>
+    <Canvas
+      camera={{ position: [0, 0, 7], fov: 55 }}
+      dpr={1}
+      gl={{ alpha: true, antialias: false }}
+      style={{ pointerEvents: "none" }}
+    >
+      <ambientLight intensity={0.8} />
+
+      <pointLight
+        position={[4, 4, 4]}
+        intensity={1.5}
+        color="#8b5cf6"
+      />
+
+      <pointLight
+        position={[-4, -3, 3]}
+        intensity={0.8}
+        color="#ec4899"
+      />
+
+      <FloatingShape />
+    </Canvas>
   );
 }
+
+// ===============================
+// DATA
+// ===============================
+
+const headers = [
+  "Hi, I'm Samsuddin Ansari",
+  "Full Stack Developer",
+  "Turning Ideas into Reality",
+  "Let's Build Something Great",
+];
+
+const paragraphs = [
+  "I build modern web experiences that look beautiful and perform exceptionally well.",
+  "Specializing in React, Next.js, and scalable full-stack applications.",
+  "Passionate about clean code, responsive interfaces, and accessible design.",
+  "Have an idea? Let's turn it into something extraordinary.",
+];
+
+const techStack = [
+  { Icon: FaReact, name: "React", color: "text-cyan-400" },
+  { Icon: SiNextdotjs, name: "Next.js", color: "text-white" },
+  { Icon: SiTailwindcss, name: "Tailwind", color: "text-teal-400" },
+  { Icon: FaNodeJs, name: "Node.js", color: "text-green-400" },
+  { Icon: SiTypescript, name: "TypeScript", color: "text-blue-400" },
+  { Icon: SiMongodb, name: "MongoDB", color: "text-green-400" },
+  { Icon: FaPython, name: "Python", color: "text-yellow-400" },
+  { Icon: FaAws, name: "AWS", color: "text-orange-400" },
+];
+
+const stats = [
+  {
+    label: "Projects Completed",
+    value: "50+",
+    Icon: FaCode,
+    color: "from-cyan-500 to-blue-500",
+  },
+  {
+    label: "Happy Clients",
+    value: "30+",
+    Icon: FaStar,
+    color: "from-yellow-500 to-orange-500",
+  },
+  {
+    label: "Years Experience",
+    value: "3+",
+    Icon: FaRocket,
+    color: "from-purple-500 to-pink-500",
+  },
+  {
+    label: "Technologies",
+    value: "15+",
+    Icon: IoSparkles,
+    color: "from-green-500 to-teal-500",
+  },
+];
+
+// ===============================
+// MAIN HERO COMPONENT
+// ===============================
 
 const Hero3d = () => {
   const [currentHeader, setCurrentHeader] = useState(0);
   const [currentParagraph, setCurrentParagraph] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [scrollIndicator, setScrollIndicator] = useState(true);
-  const containerRef = useRef(null);
+  const [showScroll, setShowScroll] = useState(true);
 
-  const headers = [
-    "Welcome to My Portfolio",
-    "Hi, I'm Samsuddin Ansari",
-    "Turning Ideas into Reality",
-    "Let's Build Something Great",
-    "Full Stack Developer",
-    "Innovation Meets Execution",
-  ];
+  const prefersReducedMotion = useReducedMotion();
 
-  const paragraphs = [
-    "I build amazing web experiences with cutting-edge technologies.",
-    "Specializing in React, Next.js, and modern web development.",
-    "Passionate about clean, performant, and accessible designs.",
-    "Let's create something extraordinary together.",
-    "Transforming concepts into functional, beautiful applications.",
-    "Where creativity meets technical excellence.",
-  ];
-
-  const techStack = [
-    { Icon: FaReact, name: "React", color: "text-cyan-400" },
-    { Icon: SiNextdotjs, name: "Next.js", color: "text-white" },
-    { Icon: SiTailwindcss, name: "Tailwind", color: "text-teal-400" },
-    { Icon: FaNodeJs, name: "Node.js", color: "text-green-500" },
-    { Icon: SiTypescript, name: "TypeScript", color: "text-blue-500" },
-    { Icon: SiMongodb, name: "MongoDB", color: "text-green-400" },
-    { Icon: FaPython, name: "Python", color: "text-yellow-500" },
-    { Icon: FaAws, name: "AWS", color: "text-orange-500" },
-  ];
-
+  // Rotate headings and paragraphs
   useEffect(() => {
-    const headerInterval = setInterval(() => {
+    if (prefersReducedMotion) return;
+
+    const headerTimer = setInterval(() => {
       setCurrentHeader((prev) => (prev + 1) % headers.length);
-    }, 3000);
+    }, 4000);
 
-    const paragraphInterval = setInterval(() => {
+    const paragraphTimer = setInterval(() => {
       setCurrentParagraph((prev) => (prev + 1) % paragraphs.length);
-    }, 3500);
-
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 2 - 1,
-        y: (e.clientY / window.innerHeight) * 2 - 1,
-      });
-    };
-
-    const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setScrollIndicator(false);
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('scroll', handleScroll);
+    }, 4500);
 
     return () => {
-      clearInterval(headerInterval);
-      clearInterval(paragraphInterval);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', handleScroll);
+      clearInterval(headerTimer);
+      clearInterval(paragraphTimer);
+    };
+  }, [prefersReducedMotion]);
+
+  // Scroll indicator visibility
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScroll(window.scrollY < 100);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <motion.section
-      ref={containerRef}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900"
+    <section
+      id="home"
+      className="relative isolate min-h-[100svh] overflow-hidden bg-[#090816] text-white"
     >
-      {/* Animated Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/20 to-transparent"></div>
-        
-        {/* Moving gradient orbs */}
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            x: [0, -100, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-600/20 rounded-full blur-3xl"
-        />
+      {/* Background gradient */}
+      <div className="absolute inset-0 -z-20 bg-gradient-to-br from-[#090816] via-[#17102d] to-[#0b1023]" />
+
+      {/* Purple glow */}
+      <div className="pointer-events-none absolute -left-32 top-10 -z-10 h-72 w-72 rounded-full bg-purple-600/20 blur-[100px] sm:h-96 sm:w-96" />
+
+      {/* Cyan glow */}
+      <div className="pointer-events-none absolute -right-32 bottom-10 -z-10 h-72 w-72 rounded-full bg-cyan-500/10 blur-[100px] sm:h-96 sm:w-96" />
+
+      {/* Decorative 3D background */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-35"
+      >
+        <HeroBackground />
       </div>
 
-      {/* 3D Background */}
-      <Canvas className="absolute inset-0 z-0">
-        <ambientLight intensity={0.3} />
-        <pointLight position={[10, 10, 10]} intensity={1} color="#8B5CF6" />
-        <pointLight position={[-10, -10, -10]} intensity={0.5} color="#EC4899" />
-        <Stars radius={300} depth={60} count={8000} factor={4} fade speed={2} />
-        <FloatingIcons />
-        <TechLogos />
-        <OrbitControls 
-          enableZoom={false} 
-          enablePan={false} 
-          autoRotate 
-          autoRotateSpeed={0.3}
-          rotateSpeed={0.5}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
-        />
-      </Canvas>
+      {/* Responsive content container */}
+      <div className="mx-auto flex min-h-[100svh] w-full max-w-7xl flex-col justify-center px-5 pb-20 pt-28 sm:px-8 sm:pb-24 sm:pt-32 lg:px-12 lg:py-28">
+        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.2fr_0.8fr] lg:gap-12 xl:gap-20">
 
-      {/* Mouse following effect */}
-      <motion.div
-        className="absolute w-96 h-96 rounded-full bg-gradient-to-r from-purple-600/10 to-pink-600/10 blur-3xl pointer-events-none"
-        animate={{
-          x: mousePosition.x * 50,
-          y: mousePosition.y * 50,
-        }}
-        transition={{ type: "spring", stiffness: 150, damping: 15 }}
-      />
-
-      <div className="relative z-10 container mx-auto px-4 md:px-8 lg:px-12">
-        <div className="flex flex-col lg:flex-row items-center justify-between min-h-screen py-20">
-          {/* Left Content */}
+          {/* LEFT CONTENT */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0"
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="min-w-0 text-center lg:text-left"
           >
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm border border-white/10 mb-6"
-            >
-              <IoSparkles className="text-yellow-400" />
-              <span className="text-sm font-semibold text-white/80">Full Stack Developer</span>
-            </motion.div>
+            {/* Role badge */}
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-400/20 bg-purple-400/[0.08] px-4 py-2 text-sm text-purple-200 backdrop-blur-md">
+              <IoSparkles className="text-yellow-300" />
+              <span>Full Stack Developer</span>
 
-            {/* Animated Header */}
-            <div className="relative h-24 mb-4 overflow-hidden">
+              <span className="relative ml-1 flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
+              </span>
+            </div>
+
+            {/* Animated heading */}
+            <div className="mb-5 min-h-[5.5rem] sm:min-h-[6.5rem] lg:min-h-[7.5rem]">
               <AnimatePresence mode="wait">
                 <motion.h1
                   key={currentHeader}
-                  initial={{ opacity: 0, y: 50 }}
+                  initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -50 }}
-                  transition={{ duration: 0.5 }}
-                  className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight"
+                  exit={prefersReducedMotion ? undefined : { opacity: 0, y: -12 }}
+                  transition={{ duration: 0.35 }}
+                  className="break-words text-4xl font-extrabold leading-[1.12] tracking-tight sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
                 >
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400">
-                    {headers[currentHeader]}
-                  </span>
+                  {currentHeader === 0 ? (
+                    <>
+                      Hi, I am{" "}
+                      <span className="bg-gradient-to-r from-cyan-300 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        Samsuddin Ansari
+                      </span>
+                    </>
+                  ) : (
+                    <span className="bg-gradient-to-r from-cyan-300 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                      {headers[currentHeader]}
+                    </span>
+                  )}
                 </motion.h1>
               </AnimatePresence>
             </div>
 
-            {/* Animated Paragraph */}
-            <div className="relative h-16 mb-8 overflow-hidden">
+            {/* Animated description */}
+            <div className="mx-auto mb-8 min-h-[5rem] max-w-xl lg:mx-0">
               <AnimatePresence mode="wait">
                 <motion.p
                   key={currentParagraph}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="text-md md:text-lg text-gray-300 max-w-2xl"
+                  exit={prefersReducedMotion ? undefined : { opacity: 0, y: -8 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-base leading-7 text-gray-300 sm:text-lg sm:leading-8"
                 >
                   {paragraphs[currentParagraph]}
                 </motion.p>
               </AnimatePresence>
             </div>
 
-            {/* Tech Stack */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="flex flex-wrap gap-3 mb-8 justify-center lg:justify-start"
-            >
-              {techStack.map((tech, index) => (
+            {/* Technology badges */}
+            <div className="mb-9 flex flex-wrap justify-center gap-2.5 lg:justify-start">
+              {techStack.map(({ Icon, name, color }, index) => (
                 <motion.div
-                  key={tech.name}
-                  initial={{ opacity: 0, scale: 0 }}
+                  key={name}
+                  initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.1 * index }}
-                  whileHover={{ y: -5, scale: 1.05 }}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg backdrop-blur-sm bg-white/5 border border-white/10 ${tech.color}`}
+                  transition={{ delay: prefersReducedMotion ? 0 : index * 0.05 }}
+                  whileHover={prefersReducedMotion ? undefined : { y: -3 }}
+                  className={`inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.05] px-3 py-2 backdrop-blur-sm transition-colors hover:bg-white/10 ${color}`}
                 >
-                  <tech.Icon className="text-lg" />
-                  <span className="text-sm font-medium">{tech.name}</span>
+                  <Icon className="text-base sm:text-lg" />
+                  <span className="text-xs font-medium text-gray-200 sm:text-sm">
+                    {name}
+                  </span>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
 
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start"
-            >
+            {/* CTA buttons */}
+            <div className="mb-9 flex flex-col justify-center gap-3 min-[420px]:flex-row lg:justify-start">
               <motion.a
                 href={RESUME_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold rounded-xl shadow-2xl overflow-hidden"
+                whileHover={prefersReducedMotion ? undefined : { y: -3 }}
+                whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
+                className="inline-flex min-h-12 items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-purple-900/30 transition-shadow hover:shadow-purple-500/25 sm:px-7 sm:text-base"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <span className="relative flex items-center justify-center gap-3">
-                  <FaDownload className="group-hover:animate-bounce" />
-                  Download Resume
-                  <FaArrowRight className="transform group-hover:translate-x-2 transition-transform" />
-                </span>
+                <FaDownload />
+                Download Resume
+                <FaArrowRight />
               </motion.a>
 
               <motion.a
                 href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold rounded-xl hover:bg-white/20 transition-all duration-300"
+                whileHover={prefersReducedMotion ? undefined : { y: -3 }}
+                whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
+                className="inline-flex min-h-12 items-center justify-center gap-3 rounded-xl border border-white/15 bg-white/[0.06] px-6 py-3.5 text-sm font-bold text-white backdrop-blur-md transition-colors hover:bg-white/10 sm:px-7 sm:text-base"
               >
-                <span className="flex items-center justify-center gap-3">
-                  Get In Touch
-                  <FaRocket className="group-hover:animate-pulse" />
-                </span>
+                Get In Touch
+                <FaRocket className="text-purple-300" />
               </motion.a>
-            </motion.div>
+            </div>
 
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="flex gap-6 justify-center lg:justify-start"
-            >
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ y: -5, scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className={`relative p-3 rounded-full backdrop-blur-sm bg-white/5 border border-white/10 ${social.color} ${social.bg} transition-all duration-300`}
-                >
-                  <social.Icon className="text-2xl" />
-                  <div className="absolute inset-0 rounded-full border-2 border-transparent group-hover:border-current opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                </motion.a>
-              ))}
-            </motion.div>
+            {/* Social links */}
+            <div className="flex items-center justify-center gap-4 lg:justify-start">
+              <span className="hidden text-sm text-gray-500 sm:inline">
+                Find me on
+              </span>
+
+              {socialLinks.map((social, index) => {
+                const SocialIcon = social.Icon;
+
+                return (
+                  <motion.a
+                    key={social.href || index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit ${social.name || "social profile"}`}
+                    whileHover={prefersReducedMotion ? undefined : { y: -4 }}
+                    whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
+                    className={`flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] transition-colors hover:bg-white/10 ${social.color || ""} ${social.bg || ""}`}
+                  >
+                    {SocialIcon && <SocialIcon className="text-xl" />}
+                  </motion.a>
+                );
+              })}
+            </div>
           </motion.div>
 
-          {/* Right Content - Stats */}
+          {/* RIGHT CONTENT: STATS */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="lg:w-2/5 grid grid-cols-2 gap-6"
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="mx-auto grid w-full max-w-xl grid-cols-2 gap-3 sm:gap-5 lg:max-w-none lg:gap-4 xl:gap-5"
           >
-            {[
-              { label: "Projects Completed", value: "50+", icon: <FaCode />, color: "from-cyan-500 to-blue-500" },
-              { label: "Happy Clients", value: "30+", icon: <FaStar />, color: "from-yellow-500 to-orange-500" },
-              { label: "Years Experience", value: "3+", icon: <FaRocket />, color: "from-purple-500 to-pink-500" },
-              { label: "Technologies", value: "15+", icon: <IoSparkles />, color: "from-green-500 to-teal-500" },
-            ].map((stat, index) => (
+            {stats.map(({ label, value, Icon, color }, index) => (
               <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 * index }}
-                whileHover={{ y: -10, scale: 1.05 }}
-                className="relative group"
+                key={label}
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.45,
+                  delay: prefersReducedMotion ? 0 : 0.2 + index * 0.08,
+                }}
+                whileHover={prefersReducedMotion ? undefined : { y: -4 }}
+                className="group relative min-w-0"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300`}></div>
-                <div className="relative p-6 rounded-2xl backdrop-blur-sm bg-white/5 border border-white/10">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className={`p-3 rounded-lg bg-gradient-to-br ${stat.color}`}>
-                      {stat.icon}
+                <div
+                  className={`absolute -inset-px rounded-2xl bg-gradient-to-br ${color} opacity-15 blur-md transition-opacity group-hover:opacity-35`}
+                />
+
+                <div className="relative flex h-full min-h-[135px] flex-col justify-between rounded-2xl border border-white/10 bg-[#131126]/80 p-4 backdrop-blur-xl sm:min-h-[165px] sm:p-6 lg:min-h-[155px] lg:p-5 xl:min-h-[175px] xl:p-6">
+                  <div className="flex items-start justify-between gap-2">
+                    <div
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${color} text-white shadow-lg sm:h-11 sm:w-11`}
+                    >
+                      <Icon className="text-base sm:text-xl" />
                     </div>
-                    <span className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                      {stat.value}
+
+                    <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent sm:text-3xl lg:text-2xl xl:text-3xl">
+                      {value}
                     </span>
                   </div>
-                  <p className="text-gray-300 text-sm">{stat.label}</p>
+
+                  <p className="mt-5 break-words text-xs leading-5 text-gray-400 sm:text-sm">
+                    {label}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -398,38 +400,33 @@ const Hero3d = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll indicator */}
       <AnimatePresence>
-        {scrollIndicator && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        {showScroll && (
+          <motion.a
+            href="#about"
+            aria-label="Scroll to about section"
+            initial={prefersReducedMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-gray-400 transition-colors hover:text-white sm:flex"
           >
+            <span className="text-[10px] font-medium uppercase tracking-[0.25em]">
+              Scroll to explore
+            </span>
+
             <motion.div
-              animate={{ y: [0, 10, 0] }}
+              animate={prefersReducedMotion ? undefined : { y: [0, 5, 0] }}
               transition={{ repeat: Infinity, duration: 1.5 }}
-              className="flex flex-col items-center gap-2"
+              className="flex flex-col items-center"
             >
-              <FaMouse className="text-white/60 text-2xl" />
-              <FaChevronDown className="text-white/60 text-xl" />
+              <FaMouse className="text-sm" />
+              <FaChevronDown className="mt-1 text-xs" />
             </motion.div>
-          </motion.div>
+          </motion.a>
         )}
       </AnimatePresence>
-
-      {/* Animated floating elements */}
-      <div className="absolute top-1/4 right-8 animate-pulse">
-        <div className="w-4 h-4 rounded-full bg-cyan-400/30"></div>
-      </div>
-      <div className="absolute bottom-1/3 left-8 animate-pulse animation-delay-1000">
-        <div className="w-6 h-6 rounded-full bg-purple-400/30"></div>
-      </div>
-      <div className="absolute top-1/3 left-1/4 animate-pulse animation-delay-2000">
-        <div className="w-3 h-3 rounded-full bg-pink-400/30"></div>
-      </div>
-    </motion.section>
+    </section>
   );
 };
 

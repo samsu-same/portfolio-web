@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaPhone, FaWhatsapp, FaEnvelope, FaInstagram } from "react-icons/fa";
+import { FaPhone, FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import { useState } from "react";
 
 const Contact = () => {
