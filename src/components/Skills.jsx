@@ -1,9 +1,18 @@
 import { motion } from "framer-motion";
-import { 
-  SiReact, SiTailwindcss, SiFramer, SiJavascript, SiHtml5, 
-  SiCss3, SiTypescript, SiRedux, SiNodedotjs, SiExpress, 
-  SiMongodb, SiNextdotjs 
+import {
+  SiReact,
+  SiTailwindcss,
+  SiFramer,
+  SiJavascript,
+  SiHtml5,
+  SiTypescript,
+  SiRedux,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiNextdotjs,
 } from "react-icons/si";
+import { FaCss3Alt } from "react-icons/fa";
 import { useState } from "react";
 
 const skillsGroups = [
@@ -23,15 +32,15 @@ const skillsGroups = [
   ],
   [
     { name: "HTML", icon: <SiHtml5 className="text-orange-500" /> },
-    { name: "CSS", icon: <SiCss3 className="text-blue-600" /> },
+    { name: "CSS", icon: <FaCss3Alt className="text-blue-600" /> },
     { name: "TypeScript", icon: <SiTypescript className="text-blue-400" /> },
     { name: "Redux", icon: <SiRedux className="text-purple-500" /> },
     { name: "HTML", icon: <SiHtml5 className="text-orange-500" /> },
-    { name: "CSS", icon: <SiCss3 className="text-blue-600" /> },
+    { name: "CSS", icon: <FaCss3Alt className="text-blue-600" /> },
     { name: "TypeScript", icon: <SiTypescript className="text-blue-400" /> },
     { name: "Redux", icon: <SiRedux className="text-purple-500" /> },
     { name: "HTML", icon: <SiHtml5 className="text-orange-500" /> },
-    { name: "CSS", icon: <SiCss3 className="text-blue-600" /> },
+    { name: "CSS", icon: <FaCss3Alt className="text-blue-600" /> },
     { name: "TypeScript", icon: <SiTypescript className="text-blue-400" /> },
     { name: "Redux", icon: <SiRedux className="text-purple-500" /> }
   ],
